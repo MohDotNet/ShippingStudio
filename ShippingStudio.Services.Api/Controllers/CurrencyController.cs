@@ -19,7 +19,7 @@ namespace ShippingStudio.Services.Api.Controllers
         }
 
         [HttpGet]
-        public List<Currency> GetAll()
+        public List<Currency> Get()
         {
             return currency.GetAll();
         }
