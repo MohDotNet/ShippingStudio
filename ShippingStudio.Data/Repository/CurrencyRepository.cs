@@ -27,12 +27,10 @@ namespace ShippingStudio.Data.Repository
         public Currency? Get(int id)
         {
             if (id <= 0) return new Currency();
-
-            using (context)
-            {
-                return context.Currency.Where(x => x.Id == id)
+            
+            return context.Currency.Where(x => x.Id == id)
                     .FirstOrDefault();
-            }
+            
         }
 
         public List<Currency> GetAll()

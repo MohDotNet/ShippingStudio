@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShippingStudio.Domain.Entities;
-using ShippingStudio.Domain.Interfaces;
 using ShippingStudio.Domain.Interfaces.Repository;
-using System.Security.Cryptography.X509Certificates;
+using ShippingStudio.Domain.Models.RequestModels.Curremcy;
+using ShippingStudio.Domain.Models.ResponseModels;
+using ShippingStudio.Domain.Models.ResponseModels.Currency;
+using ShippingStudio.Services.Api.Services;
 
 namespace ShippingStudio.Services.Api.Controllers
 {
@@ -11,17 +12,36 @@ namespace ShippingStudio.Services.Api.Controllers
     [ApiController]
     public class CurrencyController : ControllerBase
     {
-        private readonly ICurrency currency;
+        private readonly CurrencyService currencyService;
 
-        public CurrencyController(ICurrency currency)
+        public CurrencyController(CurrencyService currencyService)
         {
-            this.currency = currency;
+            this.currencyService = currencyService;
         }
 
-        [HttpGet]
+        [HttpGet("ListCurrencies")]
         public List<Currency> Get()
         {
-            return currency.GetAll();
+            return currencyService.GetAllCurrencies();
         }
+
+        [HttpGet("GetCurrencyByCode")]
+        public CurrencyResponseModel GetCurrencyByCode(string CurrencyCode)
+        {
+            return currencyService.GetCurrency(CurrencyCode);
+        }
+
+        [HttpPost("AddNewCurrency")]
+        public BaseResponseModel AddNew([FromBody] AddCurrencyRequestModel currency) 
+        {
+            return currencyService.AddNew(currency);
+        }
+
+        [HttpPut("DisableCurrency")]
+        public BaseResponseModel Update(int Id)
+        {
+            return currencyService.Update(Id);  
+        }
+
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.OpenApi.Models;
 using ShippingStudio.Data;
 using ShippingStudio.Data.Repository;
 using ShippingStudio.Domain.Interfaces.Repository;
+using ShippingStudio.Services.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<ShippingDbContext>(options =>
 
 // configure swashbuckle
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<CurrencyService>();
 
 
 var app = builder.Build();
