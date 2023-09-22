@@ -17,12 +17,15 @@ builder.Services.AddDbContext<ShippingDbContext>(options =>
 
 #region Dependency Injection Registration
     builder.Services.AddTransient<ICurrency, CurrencyRepository>();
+    builder.Services.AddTransient<IShippingPortRepository, ShippingPortRepository>();
 
 #endregion
 
 // configure swashbuckle
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<CurrencyService>();
+builder.Services.AddTransient<ShippingPortService>();
+
 
 
 var app = builder.Build();
