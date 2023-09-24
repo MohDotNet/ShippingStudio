@@ -1,4 +1,5 @@
 ﻿using ShippingStudio.Domain.Entities;
+using ShippingStudio.Domain.Models.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace ShippingStudio.Domain.Interfaces.Repository
 {
     public interface ISupplierRepository
     {
-        List<Supplier> GetAll();
-        Supplier Get(int id);
-        bool? Add(Supplier supplier);   
-        bool? Save(Supplier supplier);
+        DbSupplierResponseModel GetAll();
+        DbSupplierResponseModel Get(int id);
+        BaseResponseModel? Add(Supplier supplier);   
+        BaseResponseModel? Save(Supplier supplier);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Interfaces.Repository;
+using ShippingStudio.Domain.Models.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,16 @@ namespace ShippingStudio.Data.Repository
             this.context = context;
         }
 
-        public bool? Add(Supplier supplier)
+        public BaseResponseModel? Add(Supplier supplier)
         {
-            if (supplier == null) return false;
+            BaseResponseModel response = new BaseResponseModel();
+
+            if (supplier == null)
+            {
+                response.Code = 1;
+                response.Message = "Supplier object cannot be null.";
+                return response;
+            }
 
             using (context)
             {
@@ -30,7 +38,9 @@ namespace ShippingStudio.Data.Repository
 
                 if (currency == null || shippingPort == null)
                 {
-                    return false;
+                    response.Code = 1;
+                    response.Message = "Currency and or shipping port cannot be null";
+                    return response;
                 }
 
                 supplier.ShippingPort = shippingPort;
@@ -38,34 +48,84 @@ namespace ShippingStudio.Data.Repository
 
                 context.Suppliers.Add(supplier);    
                 context.SaveChanges();
-                return true;
+                response.Code = 0;
+                response.Message = "Supplier has beeen successfully written to the database.";
+
+                return response;
             }
         }
 
-        public Supplier? Get(int id)
+        public DbSupplierResponseModel Get(int id)
         {
-            if (id <= 0) return null;   
+            DbSupplierResponseModel response = new DbSupplierResponseModel();
+
+            if (id <= 0)
+            {
+                response.Code = 1;
+                response.Message = "Invalid Id specified to do a lookup.";
+            }
             using (context)
             {
-                return context.Suppliers.Where(x=> x.Id == id).FirstOrDefault();   
+                response.Supplier = context.Suppliers.Where(x=> x.Id == id).FirstOrDefault();   
+
+                if (response.Supplier == null) 
+                { 
+                    response.Code = 1;
+                    response.Message = "Cannot find supplier";
+                }
             }
+            return response;
         }
 
-        public List<Supplier> GetAll()
+        public DbSupplierResponseModel GetAll()
         {
-            return context.Suppliers.ToList();
-        }
-
-        public bool? Save(Supplier supplier)
-        {
-            Supplier? _original = context.Suppliers.Where(x=> x.Id == supplier.Id).FirstOrDefault();
-
-            if (_original != null)
+            var response = new DbSupplierResponseModel();
+            try
             {
-                _original = supplier;
-                context.SaveChanges();
+                response.Suppliers = context.Suppliers.ToList();
+
+                response.Code = 0;
+                response.Message = "List of suppliers retrieved...";
+                return response;
             }
-            return true;
+            catch (Exception ex)
+            {
+                response.Code = 1;
+                response.Message = "The following error has occurred : DB Error - Should this error persist, check logs.";
+                return response;
+            }
+        }
+
+        public BaseResponseModel Save(Supplier supplier)
+        {
+            BaseResponseModel response = new BaseResponseModel();
+
+            try
+            {
+                Supplier? _original = context.Suppliers.Where(x => x.Id == supplier.Id).FirstOrDefault();
+
+                if (_original != null)
+                {
+                    _original = supplier;
+                    context.SaveChanges();
+
+                    response.Code = 0;
+                    response.Message = "SAVE SUPPLIER | Successfully written data";
+                }
+
+                return response;
+            }
+            catch (Exception)
+            {
+                response.Code = 1;
+                response.Message = "The following error has occurred : DB Error - Should this error persist, check logs.";
+                return response;
+            }
+            
+            
+
+
+            
         }
     }
 }

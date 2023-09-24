@@ -14,9 +14,18 @@ namespace ShippingStudio.Services.Api.Services
             this.supplierRepository = supplierRepository;
         }
 
-        public List<Supplier?> GetAllSuppliers()
+        public DbSupplierResponseModel GetSupplier(int id)
         {
-            return supplierRepository.GetAll().ToList();
+            DbSupplierResponseModel response = new DbSupplierResponseModel();
+
+            response.Supplier = supplierRepository.Get(id).Supplier;
+
+            return response;
+        }
+
+        public DbSupplierResponseModel GetAllSuppliers()
+        {
+            return supplierRepository.GetAll();
         }
 
         public BaseResponseModel AddNewSupplier(AddNewSupplierRequestModel supplier)
@@ -75,7 +84,7 @@ namespace ShippingStudio.Services.Api.Services
 
             var result = supplierRepository.Add(supplierRecord);
 
-            if (result != true || result is null)
+            if (result.Code != 0)
             {
                 response.Code = 10;
                 response.Message = $"Supplier {supplier.Company} not been created, checked fields...";
@@ -89,9 +98,11 @@ namespace ShippingStudio.Services.Api.Services
 
         private bool SupplierExists(string Suppliername)
         {
-            var existing = supplierRepository.GetAll().Where(x => x.Company == Suppliername).FirstOrDefault();
+            var existing = supplierRepository.GetAll();
 
-            if (existing != null) { return true; }
+            var IsExisting = existing.Suppliers.Where(x => x.Company == Suppliername).FirstOrDefault();
+
+            if (IsExisting != null) { return true; }
 
             return false;
         }

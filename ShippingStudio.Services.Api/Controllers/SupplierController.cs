@@ -19,7 +19,7 @@ namespace ShippingStudio.Services.Api.Controllers
         }
 
         [HttpGet("getall")]
-        public List<Supplier> GetAll()
+        public DbSupplierResponseModel GetAll()
         {
             return supplierService.GetAllSuppliers();
         }
@@ -29,6 +29,13 @@ namespace ShippingStudio.Services.Api.Controllers
         {
             return supplierService.AddNewSupplier(supplier);
         }
+
+        [HttpGet("GetById")]
+        public DbSupplierResponseModel Get(int id)
+        {
+            return supplierService.GetSupplier(id);
+        }
+
 
     }
 }
