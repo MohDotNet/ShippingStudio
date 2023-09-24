@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Models.RequestModels;
+using ShippingStudio.Domain.Models.RequestModels.Supplier;
 using ShippingStudio.Domain.Models.ResponseModels;
 using ShippingStudio.Services.Api.Services;
 
@@ -34,6 +35,12 @@ namespace ShippingStudio.Services.Api.Controllers
         public DbSupplierResponseModel Get(int id)
         {
             return supplierService.GetSupplier(id);
+        }
+
+        [HttpPut("Update")]
+        public BaseResponseModel Update(SupplierUpdateRequestModel supplier)
+        {
+            return supplierService.UpdateSupplier(supplier);
         }
 
 

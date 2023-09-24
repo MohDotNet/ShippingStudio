@@ -1,6 +1,7 @@
 ﻿using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Interfaces.Repository;
 using ShippingStudio.Domain.Models.RequestModels;
+using ShippingStudio.Domain.Models.RequestModels.Supplier;
 using ShippingStudio.Domain.Models.ResponseModels;
 
 namespace ShippingStudio.Services.Api.Services
@@ -95,6 +96,41 @@ namespace ShippingStudio.Services.Api.Services
             response.Message = $"Supplier {supplier.Company} has been created successfully...";
             return response;
         }
+
+        public BaseResponseModel UpdateSupplier(SupplierUpdateRequestModel supplier)
+        {
+            BaseResponseModel response = new BaseResponseModel();
+
+            try
+            {
+                Supplier supplierRecord = new Supplier
+                {
+                    Id = supplier.Id,
+                    Company = supplier.Company,
+                    ContactPerson = supplier.ContactPerson,
+                    DefaultCurrency = supplier.DefaultCurrency,
+                    Email = supplier.Email,
+                    ShippingPortId = supplier.ShippingPortId,
+                    TelephoneNumebr = supplier.TelephoneNumebr
+                };
+
+                response = supplierRepository.Save(supplierRecord);
+
+                if (response.Code != 0 || response == null)
+                {
+                    response.Message = $"Record not updated : {response.Message}";
+                }
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Code = 500;
+                response.Message = ex.Message;  
+                return response;
+                
+            }
+        } 
 
         private bool SupplierExists(string Suppliername)
         {
