@@ -16,4 +16,6 @@ namespace ShippingStudio.Domain.Entities
         public string CurrencyCode { get; set; }
         public bool IsDisabled { get; set; }
     }
+
+
 }

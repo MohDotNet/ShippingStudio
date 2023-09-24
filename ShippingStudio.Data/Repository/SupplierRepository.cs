@@ -21,8 +21,21 @@ namespace ShippingStudio.Data.Repository
         public bool? Add(Supplier supplier)
         {
             if (supplier == null) return false;
+
             using (context)
             {
+
+                Currency? currency = context.Currency.FirstOrDefault(x => x.Id == supplier.DefaultCurrency);
+                ShippingPort? shippingPort = context.ShippingPorts.FirstOrDefault(x => x.Id == supplier.ShippingPortId);
+
+                if (currency == null || shippingPort == null)
+                {
+                    return false;
+                }
+
+                supplier.ShippingPort = shippingPort;
+                supplier.Currency = currency;
+
                 context.Suppliers.Add(supplier);    
                 context.SaveChanges();
                 return true;

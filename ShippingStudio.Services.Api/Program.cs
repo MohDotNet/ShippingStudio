@@ -18,6 +18,7 @@ builder.Services.AddDbContext<ShippingDbContext>(options =>
 #region Dependency Injection Registration
     builder.Services.AddTransient<ICurrency, CurrencyRepository>();
     builder.Services.AddTransient<IShippingPortRepository, ShippingPortRepository>();
+    builder.Services.AddTransient<ISupplierRepository, SupplierRepository>();   
 
 #endregion
 
@@ -25,6 +26,7 @@ builder.Services.AddDbContext<ShippingDbContext>(options =>
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<CurrencyService>();
 builder.Services.AddTransient<ShippingPortService>();
+builder.Services.AddTransient<SupplierService>();
 
 
 

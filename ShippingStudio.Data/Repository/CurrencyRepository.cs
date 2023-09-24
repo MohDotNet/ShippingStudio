@@ -1,4 +1,5 @@
-﻿using ShippingStudio.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Interfaces.Repository;
 
 namespace ShippingStudio.Data.Repository
