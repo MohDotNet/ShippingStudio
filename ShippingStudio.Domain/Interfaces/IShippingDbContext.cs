@@ -13,6 +13,7 @@ namespace ShippingStudio.Domain.Interfaces
         DbSet<Currency> Currency { get; set; }
         DbSet<Supplier> Suppliers { get; set; }
         DbSet<ShippingPort> ShippingPorts { get; set; }
+        DbSet<Filing> Filing { get; set; }
 
     }
 }

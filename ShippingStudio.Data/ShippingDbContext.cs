@@ -21,5 +21,6 @@ namespace ShippingStudio.Data
         public DbSet<Currency> Currency { get; set ; }
         public DbSet<Supplier> Suppliers { get; set ; }
         public DbSet<ShippingPort> ShippingPorts { get; set ; }
+        public DbSet<Filing> Filing { get; set; }
     }
 }
