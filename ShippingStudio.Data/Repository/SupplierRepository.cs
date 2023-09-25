@@ -64,15 +64,13 @@ namespace ShippingStudio.Data.Repository
                 response.Code = 1;
                 response.Message = "Invalid Id specified to do a lookup.";
             }
-            using (context)
-            {
-                response.Supplier = context.Suppliers.Where(x=> x.Id == id).FirstOrDefault();   
 
-                if (response.Supplier == null) 
-                { 
-                    response.Code = 1;
-                    response.Message = "Cannot find supplier";
-                }
+            response.Supplier = context.Suppliers.Where(x=> x.Id == id).FirstOrDefault();   
+
+            if (response.Supplier == null) 
+            { 
+                response.Code = 1;
+                response.Message = "Cannot find supplier";
             }
             return response;
         }

@@ -30,6 +30,11 @@ namespace ShippingStudio.Data.Repository
                     response.Code = 0;
                     response.Message = "File has been created successfully.";
                 }
+                else
+                {
+                    response.Code = 1;
+                    response.Message = "File could not be created, check tha the supplier id is Correct.";
+                }
             }
             catch (Exception ex)
             {
@@ -46,7 +51,7 @@ namespace ShippingStudio.Data.Repository
             BaseResponseModel response = new BaseResponseModel();
             try
             {
-                var _original = shippingDbContext.Filing.Where(x=> x.Id == Id).FirstOrDefault();
+                var _original = shippingDbContext.Filing.Where(x=> x.Id == FileId).FirstOrDefault();
 
                 if (_original != null)
                 {
@@ -64,6 +69,11 @@ namespace ShippingStudio.Data.Repository
             }
 
             return response;
+        }
+
+        public BaseResponseModel ChangeFileStatus(int Id)
+        {
+            throw new NotImplementedException();
         }
 
         public DbFilingResponseModel Get(int id)
