@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShippingStudio.Data;
 
@@ -10,9 +11,11 @@ using ShippingStudio.Data;
 namespace ShippingStudio.Data.Migrations
 {
     [DbContext(typeof(ShippingDbContext))]
-    partial class ShippingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230925115552_Add status column to filing table")]
+    partial class Addstatuscolumntofilingtable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,24 +48,6 @@ namespace ShippingStudio.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Currency");
-                });
-
-            modelBuilder.Entity("ShippingStudio.Domain.Entities.FileStatuses", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileStatuses");
                 });
 
             modelBuilder.Entity("ShippingStudio.Domain.Entities.Filing", b =>

@@ -7,20 +7,13 @@ using System.Threading.Tasks;
 
 namespace ShippingStudio.Domain.Entities
 {
-    public class Filing
+    public class FileStatuses
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string Filename { get; set; }
-
-        [MaxLength(50)]
-        public string FileCode { get; set; }
-        public int SupplierId { get; set; }
-        public virtual Supplier Supplier { get; set; }
-        public int FileStatus { get; set; }
-
+        public string Description { get; set; }
     }
 }

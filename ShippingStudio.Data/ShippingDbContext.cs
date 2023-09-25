@@ -22,5 +22,6 @@ namespace ShippingStudio.Data
         public DbSet<Supplier> Suppliers { get; set ; }
         public DbSet<ShippingPort> ShippingPorts { get; set ; }
         public DbSet<Filing> Filing { get; set; }
+        public DbSet<FileStatuses> FileStatuses { get; set; }
     }
 }

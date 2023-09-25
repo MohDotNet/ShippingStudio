@@ -19,7 +19,7 @@ builder.Services.AddDbContext<ShippingDbContext>(options =>
     builder.Services.AddTransient<ICurrency, CurrencyRepository>();
     builder.Services.AddTransient<IShippingPortRepository, ShippingPortRepository>();
     builder.Services.AddTransient<ISupplierRepository, SupplierRepository>();   
-
+    builder.Services.AddTransient<IFilingRepository, FilingRepository>();   
 #endregion
 
 // configure swashbuckle
