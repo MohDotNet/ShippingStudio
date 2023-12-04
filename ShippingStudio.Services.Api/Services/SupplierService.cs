@@ -85,15 +85,15 @@ namespace ShippingStudio.Services.Api.Services
 
             var result = supplierRepository.Add(supplierRecord);
 
+            response.Code = 0;
+            response.Message = $"Supplier {supplier.Company} has been created successfully...";
+
             if (result.Code != 0)
             {
                 response.Code = 10;
                 response.Message = $"Supplier {supplier.Company} not been created, checked fields...";
-                return response;
             }
 
-            response.Code = 0;
-            response.Message = $"Supplier {supplier.Company} has been created successfully...";
             return response;
         }
 
