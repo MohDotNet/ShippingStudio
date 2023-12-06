@@ -19,6 +19,9 @@ namespace ShippingStudio.Data.Repository
 
             using (context)
             {
+                var exists = context.Currency.Contains(currency);
+                if (exists) { return false; }
+
                 context.Currency.Add(currency);
                 context.SaveChanges();
                 return true;

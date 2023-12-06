@@ -30,17 +30,28 @@ namespace ShippingStudio.Services.Api.Services
                 response.Message = "Currency Data is invalid";
             }
 
-            var result = currencyRepository.Add(new Currency
-            {
-                CurrencyCode = currency.CurrencySymbol,
-                CurrencyName = currency.CurrencyDescription,
-                IsDisabled = false
-            });
 
-            if (result)
+            var exists = currencyRepository.GetAll().Find(x => x.CurrencyCode == currency.CurrencySymbol);
+
+            if (exists is not null)
             {
-                response.Code = 0;
-                response.Message = "Successfully created currency";
+                response.Code = 2;
+                response.Message = "Currency Exists";
+            }
+            else
+            {
+                var result = currencyRepository.Add(new Currency
+                {
+                    CurrencyCode = currency.CurrencySymbol,
+                    CurrencyName = currency.CurrencyDescription,
+                    IsDisabled = false
+                });
+
+                if (result)
+                {
+                    response.Code = 0;
+                    response.Message = "Successfully created currency";
+                }
             }
 
             return response;
