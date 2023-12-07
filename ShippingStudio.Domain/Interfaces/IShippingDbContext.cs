@@ -15,7 +15,8 @@ namespace ShippingStudio.Domain.Interfaces
         DbSet<ShippingPort> ShippingPorts { get; set; }
         DbSet<Filing> Filing { get; set; }
         DbSet<FileStatuses> FileStatuses { get; set; }  
-
-
+        DbSet<Order> Orders { get; set; }
+        DbSet<Product> Products { get; set; }
+        DbSet<PackingList> Packings { get; set; }   
     }
 }

@@ -10,11 +10,8 @@ namespace ShippingStudio.Domain.Entities
 {
     public class OrderLines
     {
-
         [Required]
-        public int Id { get; set; }
-        
-        
+        public int Id { get; set; }   
         public int OrderId { get; set; }
         public virtual Order Order { get; set; }
         public int ProductId { get; set; }
@@ -24,7 +21,5 @@ namespace ShippingStudio.Domain.Entities
         public double LineTotal { get; set; }
         public int TotalShipped { get; set; }
         public int Status { get; set; }
-
-
     }
 }
