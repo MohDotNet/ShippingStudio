@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShippingStudio.Data;
 
@@ -11,9 +12,11 @@ using ShippingStudio.Data;
 namespace ShippingStudio.Data.Migrations
 {
     [DbContext(typeof(ShippingDbContext))]
-    partial class ShippingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231210142543_SeedDataAdded")]
+    partial class SeedDataAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -395,80 +398,6 @@ namespace ShippingStudio.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ShippingStudio.Domain.Entities.PackingList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("ArrivedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ContainerNumber")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<int>("ContainerType")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CostingDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("CostingDone")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DeliveredDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("HasArrived")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("HasDelivered")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("HasDeparted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("PackedDated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("QuantityCheckedIn")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("ShipQuantity")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("ShippedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("SupplierId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("WaybillNumber")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("SupplierId");
-
-                    b.ToTable("PackingList");
-                });
-
             modelBuilder.Entity("ShippingStudio.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -641,33 +570,6 @@ namespace ShippingStudio.Data.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ShippingStudio.Domain.Entities.PackingList", b =>
-                {
-                    b.HasOne("ShippingStudio.Domain.Entities.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShippingStudio.Domain.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShippingStudio.Domain.Entities.Supplier", "Supplier")
-                        .WithMany()
-                        .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Supplier");
                 });
 
             modelBuilder.Entity("ShippingStudio.Domain.Entities.Supplier", b =>

@@ -21,6 +21,8 @@ namespace ShippingStudio.Domain.Entities
         public int SupplierId { get; set; }
         public virtual Supplier Supplier { get; set; }
         public int FileStatus { get; set; }
+        public virtual FileStatuses FileStatuses { get; set; }
+
 
     }
 }

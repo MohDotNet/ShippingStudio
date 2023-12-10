@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,11 +25,13 @@ namespace ShippingStudio.Domain.Entities
 
         [MaxLength(20)]
         public string TelephoneNumebr { get; set; }
-        
-        
+
+        [ForeignKey("Currency")]
         public int DefaultCurrency { get; set; }
         public virtual Currency Currency { get; set; }
-        
+
+
+        [ForeignKey("ShippingPorts")]
         public int ShippingPortId { get; set; }
         public virtual ShippingPort ShippingPort { get; set; }
 

@@ -21,5 +21,8 @@ namespace ShippingStudio.Domain.Entities
         public double LineTotal { get; set; }
         public int TotalShipped { get; set; }
         public int Status { get; set; }
+        public virtual LineStatus LineStatus { get; set; }
+
+
     }
 }

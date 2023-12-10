@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,8 @@ namespace ShippingStudio.Domain.Entities
     {
         [Required]
         public int Id { get; set; }
-        
+
+        [ForeignKey("Suppliers") ]
         public int SupplierId { get; set; }
         public virtual Supplier Supplier { get; set; }
 
@@ -32,11 +34,19 @@ namespace ShippingStudio.Domain.Entities
 
         [MaxLength(100)]
         public string PortDestination { get; set; }
+
+        [ForeignKey("Currency")]
         public int CurrencyId { get; set; }
         public virtual Currency Currency { get; set; }
+
+        [ForeignKey("Incoterms")]
         public int IncotermId { get; set; }
         public virtual Incoterm Incoterm { get; set; }
-        public int OrderStatus { get; set; }
+
+        [ForeignKey("OrderStatuses")]
+        public int OrderStatusId { get; set; }
+        public virtual OrderStatus OrderStatus { get; set; }
+
 
     }
 }

@@ -11,5 +11,10 @@ namespace ShippingStudio.Domain.Entities
         [MaxLength(100)]
         public string InctermName { get; set; }
 
+
+        [Required]
+        [MaxLength(10)]
+        public string IncotermSymbol { get; set; }
+
     }
 }

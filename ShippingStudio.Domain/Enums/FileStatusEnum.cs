@@ -15,21 +15,21 @@ namespace ShippingStudio.Domain.Enums
         /// <summary>
         /// File has been created but no active order has been associated with it
         /// </summary>
-        New = 0,
+        New = 1,
 
         /// <summary>
         /// File is open when orders are associated with it, and such order/s have an order status of other than closed
         /// </summary>
-        Open = 1,
+        Open = 2,
 
         /// <summary>
         /// A File is set on hold if for any reason a supplier cannot commit to orders for the near future without resolution pending.
         /// </summary>
-        Onhold = 2,
+        Onhold = 3,
 
         /// <summary>
         /// All orders have been closed.
         /// </summary>
-        Closed = 3
+        Closed = 4
     }
 }
