@@ -23,6 +23,8 @@ namespace ShippingStudio.Domain.Entities
         public int Status { get; set; }
         public virtual LineStatus LineStatus { get; set; }
 
+        public List<PackingList>? PackingList { get; set; }
+
 
     }
 }

@@ -20,6 +20,7 @@ builder.Services.AddDbContext<ShippingDbContext>(options =>
     builder.Services.AddTransient<ISupplierRepository, SupplierRepository>();   
     builder.Services.AddTransient<IFilingRepository, FilingRepository>();   
     builder.Services.AddTransient<IOrderRepository, OrderRepository>(); 
+    builder.Services.AddTransient<IOrderLinesRepository, OrderLineRepository>();    
 #endregion
 
 // configure swashbuckle

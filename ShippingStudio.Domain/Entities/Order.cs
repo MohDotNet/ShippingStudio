@@ -47,6 +47,8 @@ namespace ShippingStudio.Domain.Entities
         public int OrderStatusId { get; set; }
         public virtual OrderStatus OrderStatus { get; set; }
 
+        public List<OrderLines>? OrderLines { get; set; }
+
 
     }
 }
