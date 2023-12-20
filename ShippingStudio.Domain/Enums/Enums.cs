@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ShippingStudio.Domain.Enums
 {
-    public class Enums
-    {
-        enum LineStatusEnum
+    
+        public enum LineStatusEnum
         {
             /// <summary>
             /// A Line is in the new status prior to it being shipped.
@@ -36,7 +35,7 @@ namespace ShippingStudio.Domain.Enums
             Cancelled = 5
         }
 
-        enum OrderStatus
+       public enum OrderStatus
         {
             /// <summary>
             /// Order in a new state prior to a confirmed indent from the supplier.
@@ -64,4 +63,4 @@ namespace ShippingStudio.Domain.Enums
             Cancelled = 5
         }
     }
-}
+
