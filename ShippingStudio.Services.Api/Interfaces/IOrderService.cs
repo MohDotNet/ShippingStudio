@@ -3,6 +3,10 @@ using ShippingStudio.Domain.Models.ResponseModels.Order;
 
 namespace ShippingStudio.Services.Api.Interfaces
 {
+
+    /// <summary>
+    /// Responsible for order creation and management.  Core functionality.
+    /// </summary>
     public interface IOrderService
     {
         /// <summary>
