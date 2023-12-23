@@ -1,12 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShippingStudio.Data
 {
@@ -80,6 +74,20 @@ namespace ShippingStudio.Data
                 new Incoterm { Id = 6, InctermName = "Carriage Insurance Paid To", IncotermSymbol = "CIP" }
 
                 );
+
+            modelBuilder.Entity<Product>()
+                .HasData(
+                new Product { Id = 1, Description = "Admin Test Product", IsDisabled = false });
+
+
+            modelBuilder.Entity<ShippingPort>()
+                .HasData(new ShippingPort { Id = 1, Port = "Cape Town", Country = "South Africa", IsDisabled = false });
+
+            modelBuilder.Entity<Supplier>()
+                .HasData(new Supplier { Id = 1, Company = "Admin Company Ltd.", ContactPerson = "Mohamed", CurrencyId = 1, Email = "Ameerodien@outlook.com", ShippingPortId = 1, TelephoneNumebr = "0837985535" });
+
+
+
         }
     }
 }

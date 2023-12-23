@@ -48,7 +48,7 @@ namespace ShippingStudio.Services.Api.Services
                 response.Message = "Comopany name is invalid, null or empty";
             }
 
-            if (String.IsNullOrEmpty(supplier.ContactPerson) || supplier.ContactPerson.Length < 3)
+            if (string.IsNullOrEmpty(supplier.ContactPerson) || supplier.ContactPerson.Length < 3)
             {
                 response.Code = 3;
                 response.Message = "Supplier contact person name is invalid";
@@ -77,7 +77,7 @@ namespace ShippingStudio.Services.Api.Services
             {
                 Company = supplier.Company,
                 ContactPerson = supplier.ContactPerson,
-                DefaultCurrency = supplier.DefaultCurrency,
+                CurrencyId = supplier.DefaultCurrency,
                 Email = supplier.Email,
                 ShippingPortId = supplier.ShippingPortId,
                 TelephoneNumebr = supplier.TelephoneNumebr,
@@ -108,7 +108,7 @@ namespace ShippingStudio.Services.Api.Services
                     Id = supplier.Id,
                     Company = supplier.Company,
                     ContactPerson = supplier.ContactPerson,
-                    DefaultCurrency = supplier.DefaultCurrency,
+                    CurrencyId = supplier.DefaultCurrency,
                     Email = supplier.Email,
                     ShippingPortId = supplier.ShippingPortId,
                     TelephoneNumebr = supplier.TelephoneNumebr

@@ -1,4 +1,5 @@
-﻿using ShippingStudio.Domain.Entities;
+﻿using ShippingStudio.Domain.DTO;
+using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Models.ResponseModels;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace ShippingStudio.Domain.Interfaces.Repository
 {
     public interface IOrderRepository
     {
-        BaseResponseModel Add(Order order);
+        BaseResponseModel Add(OrderDto order);
         List<Order> GetAll();   
         Order GetOrder(int id);
         Order GetOrder(string IndentNumber);

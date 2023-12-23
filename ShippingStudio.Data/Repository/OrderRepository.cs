@@ -1,13 +1,9 @@
-﻿using Microsoft.Identity.Client;
+﻿using ShippingStudio.Domain.DTO;
 using ShippingStudio.Domain.Entities;
+using ShippingStudio.Domain.Enums;
 using ShippingStudio.Domain.Interfaces.Repository;
 using ShippingStudio.Domain.Models.ResponseModels;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection.Metadata;
 
 namespace ShippingStudio.Data.Repository
 {
@@ -20,7 +16,7 @@ namespace ShippingStudio.Data.Repository
             _context = context;
         }
 
-        public BaseResponseModel Add(Order order)
+        public BaseResponseModel Add(OrderDto order)
         {
             var response = new BaseResponseModel(); 
 
@@ -29,7 +25,48 @@ namespace ShippingStudio.Data.Repository
 
             try
             {
-                _context.Orders.Add(order);
+
+                List<OrderLines> orderLines = new List<OrderLines>();
+
+                if (order.OrderLines.Count < 1 || order.OrderLines is null)
+                {
+                    response.Code = 1;
+                    response.Message = "Order cannot be created, Order Lines cannot be null or you require at least one order line.";
+
+                    return response;
+                 
+                }
+
+                foreach (var item in order.OrderLines)
+                {
+                    orderLines.Add(new OrderLines
+                    {
+                        Price = item.Price,
+                        ProductId = item.ProductId,
+                        Quantity = item.Quantity,
+                        LineTotal = item.LineTotal,
+                        LineStatusId = (int)LineStatusEnum.New
+                    });
+                }
+
+                var _order = new Order
+                {
+                    CurrencyId = order.CurrencyId,
+                    IndentNumber = order.IndentNumber,
+                    OrderDate = order.OrderDate,
+                    OrderStatusId = order.OrderStatusId,
+                    PortOfOrigin = order.PortOfOrigin,
+                    PortDestination = order.PortDestination,
+                    SupplierId = order.SupplierId,
+                    SupplierOrderReference = order.SupplierOrderReference,
+                    IncotermId = order.IncotermId,
+                    InternalOrderReference = order.InternalOrderReference,
+                    OrderLines = orderLines
+                  
+                };
+
+
+                _context.Orders.Add(_order);
                 _context.SaveChanges();
                 response.Code = 0;
                 response.Message = "Order has been created successfully....";
@@ -37,7 +74,7 @@ namespace ShippingStudio.Data.Repository
             catch (Exception ex)
             {
                 response.Code = 1;
-                response.Message = ex.Message;
+                response.Message = ex..Message;
             }
 
             return response;

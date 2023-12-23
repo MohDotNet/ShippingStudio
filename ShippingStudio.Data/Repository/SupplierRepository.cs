@@ -1,12 +1,6 @@
 ﻿using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Interfaces.Repository;
 using ShippingStudio.Domain.Models.ResponseModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShippingStudio.Data.Repository
 {
@@ -33,7 +27,7 @@ namespace ShippingStudio.Data.Repository
             using (context)
             {
 
-                Currency? currency = context.Currency.FirstOrDefault(x => x.Id == supplier.DefaultCurrency);
+                Currency? currency = context.Currency.FirstOrDefault(x => x.Id == supplier.CurrencyId);
                 ShippingPort? shippingPort = context.ShippingPorts.FirstOrDefault(x => x.Id == supplier.ShippingPortId);
 
                 if (currency == null || shippingPort == null)
@@ -44,7 +38,8 @@ namespace ShippingStudio.Data.Repository
                 }
 
                 supplier.ShippingPort = shippingPort;
-                supplier.Currency = currency;
+                supplier.CurrencyId = currency.Id;
+                
 
                 context.Suppliers.Add(supplier);    
                 context.SaveChanges();
@@ -119,11 +114,6 @@ namespace ShippingStudio.Data.Repository
                 response.Message = "The following error has occurred : DB Error - Should this error persist, check logs.";
                 return response;
             }
-            
-            
-
-
-            
         }
     }
 }

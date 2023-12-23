@@ -31,6 +31,7 @@ builder.Services.AddTransient<CurrencyService>();
 builder.Services.AddTransient<ShippingPortService>();
 builder.Services.AddTransient<SupplierService>();
 builder.Services.AddTransient<IFilingService, FilingService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
 #endregion
 
 var app = builder.Build();

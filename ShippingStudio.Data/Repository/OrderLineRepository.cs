@@ -46,7 +46,7 @@ namespace ShippingStudio.Data.Repository
                 originalLine.Price = orderLines.Price;
                 originalLine.LineTotal = orderLines.LineTotal;
                 originalLine.TotalShipped = orderLines.TotalShipped;
-                originalLine.Status = orderLines.Status;
+                originalLine.LineStatusId = orderLines.LineStatusId;
 
                 _context.SaveChanges();
 

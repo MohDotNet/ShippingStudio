@@ -21,13 +21,13 @@ namespace ShippingStudio.Domain.Entities
         public DateTime OrderDate { get; set; }
 
         [MaxLength(50)]
-        public string IndentNumber { get; set; }
+        public string? IndentNumber { get; set; }
         
         [MaxLength(50)]
         public string InternalOrderReference { get; set; }
 
         [MaxLength(50)]
-        public string SupplierOrderReference { get; set; }
+        public string? SupplierOrderReference { get; set; }
 
         [MaxLength(100)]
         public string PortOfOrigin { get; set; }

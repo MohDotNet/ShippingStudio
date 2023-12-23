@@ -27,7 +27,7 @@ namespace ShippingStudio.Domain.Entities
         public string TelephoneNumebr { get; set; }
 
         [ForeignKey("Currency")]
-        public int DefaultCurrency { get; set; }
+        public int CurrencyId { get; set; }
         public virtual Currency Currency { get; set; }
 
 

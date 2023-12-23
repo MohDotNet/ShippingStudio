@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShippingStudio.Data;
 
@@ -11,9 +12,11 @@ using ShippingStudio.Data;
 namespace ShippingStudio.Data.Migrations
 {
     [DbContext(typeof(ShippingDbContext))]
-    partial class ShippingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231222100059_UpdateSupplierTableCurrencyId")]
+    partial class UpdateSupplierTableCurrencyId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -261,6 +264,7 @@ namespace ShippingStudio.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("IndentNumber")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -289,6 +293,7 @@ namespace ShippingStudio.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("SupplierOrderReference")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
