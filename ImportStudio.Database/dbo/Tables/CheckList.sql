@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[CheckList]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [OrderId] INT NOT NULL, 
+    [IndentNumber] NVARCHAR(100) NULL, 
+    [WaybillNumber] NVARCHAR(100) NULL, 
+    [PurchaseOrderCreated] BIT NULL, 
+    [PurchaseOrderDate] DATETIME NULL, 
+    [IndentReceived] BIT NULL, 
+    [IndentReceivedDate] DATETIME NULL, 
+    [PackingListReceived] BIT NULL, 
+    [PackingListReceiveDate] DATETIME NULL, 
+    [HasShipped] BIT NULL, 
+    [DateShipped] DATETIME NULL, 
+    [HasArrived] BIT NULL, 
+    [DateArrived] DATETIME NULL, 
+    [HasDelivered] BIT NULL, 
+    [DeliveryDate] DATETIME NULL, 
+    [DoneCosting] BIT NULL, 
+    [CostingDate] DATETIME NULL, 
+    [RaisedFinance] BIT NULL, 
+    [FinanceDate] DATETIME NULL, 
+    [HasInsured] BIT NULL, 
+    [InsuranceDeclarationDate] DATETIME NULL, 
+    [ExchangeRate] DECIMAL NULL, 
+    [CurrencyId] INT NULL
+)

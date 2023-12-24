@@ -75,5 +75,9 @@
     <Build Include="dbo\Tables\Orders.sql" />
     <Build Include="dbo\Tables\OrderLines.sql" />
     <Build Include="dbo\Tables\PackingList.sql" />
+    <Build Include="dbo\Tables\CheckList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImportStudio.Database.publish.xml" />
   </ItemGroup>
 </Project>
