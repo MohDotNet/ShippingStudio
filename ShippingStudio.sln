@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShippingStudio.Domain", "Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShippingStudio.Services.Api", "ShippingStudio.Services.Api\ShippingStudio.Services.Api.csproj", "{844ED721-A390-4D7D-AE6A-5D2F8CE3C33F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShippingStudio.Tests", "ShippingStudio.Tests\ShippingStudio.Tests.csproj", "{75502426-AA2A-4767-B40D-9F6FEF9A44C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShippingStudio.Tests", "ShippingStudio.Tests\ShippingStudio.Tests.csproj", "{75502426-AA2A-4767-B40D-9F6FEF9A44C3}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ImportStudio.Database", "ImportStudio.Database\ImportStudio.Database.sqlproj", "{AC7FEB83-E185-4639-8338-8D48F3E258DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,12 @@ Global
 		{75502426-AA2A-4767-B40D-9F6FEF9A44C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75502426-AA2A-4767-B40D-9F6FEF9A44C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75502426-AA2A-4767-B40D-9F6FEF9A44C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC7FEB83-E185-4639-8338-8D48F3E258DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC7FEB83-E185-4639-8338-8D48F3E258DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC7FEB83-E185-4639-8338-8D48F3E258DE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AC7FEB83-E185-4639-8338-8D48F3E258DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC7FEB83-E185-4639-8338-8D48F3E258DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC7FEB83-E185-4639-8338-8D48F3E258DE}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
