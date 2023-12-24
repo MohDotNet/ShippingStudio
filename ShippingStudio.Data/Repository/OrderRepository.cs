@@ -74,7 +74,7 @@ namespace ShippingStudio.Data.Repository
             catch (Exception ex)
             {
                 response.Code = 1;
-                response.Message = ex..Message;
+                response.Message = ex.Message;
             }
 
             return response;

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShippingStudio.Domain.Enums
+﻿namespace ShippingStudio.Domain.Enums
 {
-    
-        public enum LineStatusEnum
+
+    public enum LineStatusEnum
         {
             /// <summary>
             /// A Line is in the new status prior to it being shipped.
