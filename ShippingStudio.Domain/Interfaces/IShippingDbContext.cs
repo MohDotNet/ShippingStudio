@@ -11,6 +11,7 @@ namespace ShippingStudio.Domain.Interfaces
     public interface IShippingDbContext
     {
         DbSet<Currency> Currency { get; set; }
+        DbSet<CheckList> CheckList { get; set; }    
         DbSet<Supplier> Suppliers { get; set; }
         DbSet<ShippingPort> ShippingPorts { get; set; }
         DbSet<Filing> Filing { get; set; }

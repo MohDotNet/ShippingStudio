@@ -49,6 +49,11 @@ namespace ShippingStudio.Data.Repository
                     });
                 }
 
+                /* Creates an initial check list entry.
+                 * If there are multiple shipments to an order subsequent checklists will be added.
+                 * If the order is shipped in full, the system should only use one entry */
+                List<CheckList> _checkList = new List<CheckList> { new CheckList { PurchaseOrderCreated = true, PurchaseOrderDate = DateTime.Now.Date} };
+
                 var _order = new Order
                 {
                     CurrencyId = order.CurrencyId,
@@ -61,8 +66,8 @@ namespace ShippingStudio.Data.Repository
                     SupplierOrderReference = order.SupplierOrderReference,
                     IncotermId = order.IncotermId,
                     InternalOrderReference = order.InternalOrderReference,
-                    OrderLines = orderLines
-                  
+                    OrderLines = orderLines,
+                    CheckLists = _checkList,
                 };
 
 

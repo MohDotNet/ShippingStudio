@@ -1,4 +1,5 @@
 ﻿using ShippingStudio.Domain.DTO;
+using ShippingStudio.Domain.Enums;
 using ShippingStudio.Domain.Interfaces.Repository;
 using ShippingStudio.Domain.Models.RequestModels.Order;
 using ShippingStudio.Domain.Models.ResponseModels.Order;
@@ -29,11 +30,11 @@ namespace ShippingStudio.Services.Api.Services
             {
                 OrderDto orderDto = new OrderDto
                 {
+                    OrderDate = DateTime.Now,
+                    OrderStatusId = (int)OrderStatus.New,
                     CurrencyId = request.CurrencyId,
                     IncotermId = request.IncotermId,
                     InternalOrderReference = request.InternalOrderReference,
-                    OrderDate = request.OrderDate,
-                    OrderStatusId = request.OrderStatusId,
                     PortDestination = request.PortDestination,
                     PortOfOrigin = request.PortOfOrigin,
                     SupplierId = request.SupplierId,

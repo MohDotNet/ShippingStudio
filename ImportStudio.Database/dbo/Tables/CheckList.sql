@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[CheckList]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [OrderId] INT NOT NULL, 
     [IndentNumber] NVARCHAR(100) NULL, 
     [WaybillNumber] NVARCHAR(100) NULL, 

@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Orders] (
     [Id]                     INT            IDENTITY (1, 1) NOT NULL,
     [SupplierId]             INT            NOT NULL,
-    [OrderDate]              DATETIME2 (7)  NOT NULL,
+    [OrderDate]              DateTime       NULL,
     [IndentNumber]           NVARCHAR (50)  NULL,
     [InternalOrderReference] NVARCHAR (50)  NOT NULL,
     [SupplierOrderReference] NVARCHAR (50)  NULL,

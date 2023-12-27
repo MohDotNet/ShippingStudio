@@ -49,6 +49,8 @@ namespace ShippingStudio.Domain.Entities
 
         public List<OrderLines>? OrderLines { get; set; }
 
+        public List<CheckList>? CheckLists { get; set; }
+
 
     }
 }
