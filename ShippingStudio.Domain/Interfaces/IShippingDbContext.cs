@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShippingStudio.Domain.Entities;
+using ShippingStudio.Domain.Models.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace ShippingStudio.Domain.Interfaces
         DbSet<OrderLines> OrderLines { get; set; }  
         DbSet<LineStatus> LineStatuses { get; set; }
         DbSet<Incoterm> Incoterms { get; set; }
-        
+
+        BaseResponseModel ConfirmOrder(string IndentNumber, int OrderId);
 
 
     }

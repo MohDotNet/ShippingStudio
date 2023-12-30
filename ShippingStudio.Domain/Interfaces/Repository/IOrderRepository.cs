@@ -17,5 +17,7 @@ namespace ShippingStudio.Domain.Interfaces.Repository
         Order GetOrder(string IndentNumber);
         BaseResponseModel Update(Order order);
 
+        BaseResponseModel ConfirmPurchaseOrder(int OrderId, string IndentNumber);
+
     }
 }

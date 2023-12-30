@@ -1,4 +1,7 @@
-﻿using ShippingStudio.Domain.DTO;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using ShippingStudio.Domain.DTO;
 using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Enums;
 using ShippingStudio.Domain.Interfaces.Repository;
@@ -14,6 +17,14 @@ namespace ShippingStudio.Data.Repository
         public OrderRepository(ShippingDbContext context)
         {
             _context = context;
+        }
+
+        public BaseResponseModel ConfirmPurchaseOrder(int OrderId, string IndentNumber)
+        {
+
+            var result = _context.ConfirmOrder(IndentNumber, OrderId);
+
+            return result;
         }
 
         public BaseResponseModel Add(OrderDto order)

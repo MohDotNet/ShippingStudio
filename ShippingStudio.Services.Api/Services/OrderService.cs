@@ -2,6 +2,7 @@
 using ShippingStudio.Domain.Enums;
 using ShippingStudio.Domain.Interfaces.Repository;
 using ShippingStudio.Domain.Models.RequestModels.Order;
+using ShippingStudio.Domain.Models.ResponseModels;
 using ShippingStudio.Domain.Models.ResponseModels.Order;
 using ShippingStudio.Services.Api.Interfaces;
 
@@ -17,6 +18,8 @@ namespace ShippingStudio.Services.Api.Services
             this.orderRepository = orderRepository;
             this.orderLinesRepository = orderLinesRepository;
         }
+
+        
 
         public OrderResponseModel CreateOrder(CreateOrderRequestModel request)
         {
@@ -60,5 +63,28 @@ namespace ShippingStudio.Services.Api.Services
         }
 
 
+        public BaseResponseModel ConfirmPurchaseOrder(ConfirmPurchaseOrderModel request)
+        {
+
+            BaseResponseModel response = new BaseResponseModel();
+
+            response.Code = 0;
+
+            if (request is null || request.OrderId <= 0 || string.IsNullOrEmpty(request.IndentNumber))
+            {
+                response.Code = 1;
+                response.Message = "Invalid request model, check all inputs";
+            }
+
+            if (response.Code == 0)
+            {
+                var result = orderRepository.ConfirmPurchaseOrder(request.OrderId, request.IndentNumber);
+                response.Code=  result.Code;    
+                response.Message = result.Message;
+            }
+
+
+            return response;
+        }
     }
 }

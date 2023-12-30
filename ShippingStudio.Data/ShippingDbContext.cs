@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Interfaces;
+using ShippingStudio.Domain.Models.ResponseModels;
 
 namespace ShippingStudio.Data
 {
@@ -27,13 +29,32 @@ namespace ShippingStudio.Data
         public DbSet<PackingList> PackingList { get; set; }
 
 
+        #region Stored Procedures
+        public BaseResponseModel ConfirmOrder(string IndentNumber, int OrderId)
+        {
+            SqlParameter orderId = new SqlParameter("orderId", OrderId);
+            SqlParameter indentNumber = new SqlParameter("indentNumber", IndentNumber);
 
+
+            BaseResponseModel? result = Set<BaseResponseModel>().FromSqlRaw("EXEC SupplierConfirmOrder @orderId, @indentNumber", orderId, indentNumber)
+                .AsEnumerable()
+                .SingleOrDefault();
+
+            return result;
+        }
+
+
+        #endregion
 
 
 
         // Seed data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
+            modelBuilder.Entity<BaseResponseModel>().HasNoKey();
+
             modelBuilder.Entity<Currency>()
                 .HasData(
                     new Currency { Id = 1, CurrencyName = "South African Rand", CurrencyCode = "ZAR", IsDisabled = false },

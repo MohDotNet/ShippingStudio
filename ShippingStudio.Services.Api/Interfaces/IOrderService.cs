@@ -1,4 +1,5 @@
 ﻿using ShippingStudio.Domain.Models.RequestModels.Order;
+using ShippingStudio.Domain.Models.ResponseModels;
 using ShippingStudio.Domain.Models.ResponseModels.Order;
 
 namespace ShippingStudio.Services.Api.Interfaces
@@ -15,6 +16,15 @@ namespace ShippingStudio.Services.Api.Interfaces
         /// <param name="request"></param>
         /// <returns></returns>
         OrderResponseModel CreateOrder(CreateOrderRequestModel request);
+
+
+        /// <summary>
+        /// The Supplier will confirm a purhcase order, generally by sending an Indent Document.
+        /// Call this method to update the Order with the Indent Number.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        BaseResponseModel ConfirmPurchaseOrder(ConfirmPurchaseOrderModel request);
 
     }
 }

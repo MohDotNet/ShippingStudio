@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShippingStudio.Domain.Models.RequestModels.Order;
+using ShippingStudio.Domain.Models.ResponseModels;
 using ShippingStudio.Domain.Models.ResponseModels.Order;
 using ShippingStudio.Services.Api.Interfaces;
 
@@ -20,6 +21,12 @@ namespace ShippingStudio.Services.Api.Controllers
         public OrderResponseModel CreateOrder(CreateOrderRequestModel request)
         {
             return _orderService.CreateOrder(request);
+        }
+
+        [HttpPost("ConfirmPurchaseOrder")]
+        public BaseResponseModel ConfirmPurchaseOrder(ConfirmPurchaseOrderModel request)
+        {
+            return _orderService.ConfirmPurchaseOrder(request);
         }
     }
 }
