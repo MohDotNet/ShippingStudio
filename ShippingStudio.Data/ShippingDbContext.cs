@@ -14,20 +14,22 @@ namespace ShippingStudio.Data
         {
 
         }
-        public DbSet<Currency> Currency { get; set ; }
-        public DbSet<CheckList> CheckList { get; set ; }
-        public DbSet<Supplier> Suppliers { get; set ; }
-        public DbSet<ShippingPort> ShippingPorts { get; set ; }
+
+        #region Database Tables
+        public DbSet<Currency> Currency { get; set; }
+        public DbSet<CheckList> CheckList { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<ShippingPort> ShippingPorts { get; set; }
         public DbSet<Filing> Filing { get; set; }
         public DbSet<FileStatuses> FileStatuses { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
-        public DbSet<LineStatus> LineStatuses { get; set; } 
+        public DbSet<LineStatus> LineStatuses { get; set; }
         public DbSet<Incoterm> Incoterms { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLines> OrderLines { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<PackingList> PackingList { get; set; }
-
+        #endregion
 
         #region Stored Procedures
         public BaseResponseModel ConfirmOrder(string IndentNumber, int OrderId)
@@ -45,8 +47,6 @@ namespace ShippingStudio.Data
 
 
         #endregion
-
-
 
         // Seed data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
