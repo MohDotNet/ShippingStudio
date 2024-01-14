@@ -33,6 +33,7 @@ builder.Services.AddTransient<ShippingPortService>();
 builder.Services.AddTransient<SupplierService>();
 builder.Services.AddTransient<IFilingService, FilingService>();
 builder.Services.AddTransient<IOrderService, OrderService>();
+builder.Services.AddTransient<IShippingService, ShippingService>(); 
 #endregion
 
 var app = builder.Build();

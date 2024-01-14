@@ -1,4 +1,5 @@
-﻿using ShippingStudio.Domain.Entities;
+﻿using ShippingStudio.Domain.DTO;
+using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Interfaces.Repository;
 using ShippingStudio.Domain.Models.ResponseModels;
 
@@ -14,7 +15,7 @@ namespace ShippingStudio.Data.Repository
         }
 
 
-        public BaseResponseModel Add(PackingList packingList)
+        public BaseResponseModel Add(PackingListDto packingList)
         {
             BaseResponseModel response = new BaseResponseModel();
 
@@ -28,7 +29,28 @@ namespace ShippingStudio.Data.Repository
 
             try
             {
-                _context.PackingList.Add(packingList);
+
+                PackingList packingListTable = new PackingList
+                {
+                    ArrivedDate = packingList.ArrivedDate,
+                    ContainerNumber = packingList.ContainerNumber,
+                    ContainerType = packingList.ContainerType,
+                    CostingDate = packingList.CostingDate,
+                    CostingDone = packingList.CostingDone,
+                    DeliveredDate = null,
+                    HasArrived = false,
+                    HasDelivered = false,
+                    HasDeparted = false,
+                    OrderId = packingList.OrderId,
+                    PackedDated = packingList.PackedDated,
+                    WaybillNumber = packingList.WaybillNumber,
+                    SupplierId = packingList.SupplierId,
+                    ShipQuantity = packingList.ShipQuantity,
+                    ShippedDate = packingList.ShippedDate,
+                    QuantityCheckedIn = 0,
+                };
+
+                _context.PackingList.Add(packingListTable);
                 _context.SaveChanges();
 
                 response.Code = 0;
@@ -96,6 +118,7 @@ namespace ShippingStudio.Data.Repository
             
             }
             
+            return respoonse;
         }
     }
 }

@@ -28,8 +28,7 @@
             /// </summary>
             Cancelled = 5
         }
-
-       public enum OrderStatus
+    public enum OrderStatus
         {
             /// <summary>
             /// Order in a new state prior to a confirmed indent from the supplier.
@@ -56,5 +55,14 @@
             /// </summary>
             Cancelled = 5
         }
+
+    public enum SystemCodes
+    {
+        success = 0,
+        nullObject = 1,
+        requestValidationError = 2,
+
     }
+ 
+}
 

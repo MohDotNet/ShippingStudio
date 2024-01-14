@@ -1,4 +1,5 @@
-﻿using ShippingStudio.Domain.Entities;
+﻿using ShippingStudio.Domain.DTO;
+using ShippingStudio.Domain.Entities;
 using ShippingStudio.Domain.Models.ResponseModels;
 
 namespace ShippingStudio.Domain.Interfaces.Repository
@@ -11,7 +12,7 @@ namespace ShippingStudio.Domain.Interfaces.Repository
         /// </summary>
         /// <param name="packingList"></param>
         /// <returns></returns>
-        BaseResponseModel Add(PackingList packingList);
+        BaseResponseModel Add(PackingListDto packingList);
 
 
         /// <summary>
