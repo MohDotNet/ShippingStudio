@@ -7,6 +7,7 @@ namespace ShippingStudio.Services.Api.Controllers
 {
 
     [Route("api/[controller]")]
+    [ApiController]
     public class ShippingController : ControllerBase
     {
         private readonly IShippingService _shippingService;
@@ -16,7 +17,8 @@ namespace ShippingStudio.Services.Api.Controllers
             _shippingService = shippingService;
         }
 
-        BaseResponseModel CapturePackingList(CapturePackingListRequest request)
+        [HttpPost("CapturePackingSlip")]
+        public BaseResponseModel CapturePackingList(CapturePackingListRequest request)
         {
             return _shippingService.CapturePackingList(request);
         }
